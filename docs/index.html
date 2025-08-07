@@ -1,0 +1,529 @@
+<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación: Sérum Vichy Minéral 89 Probiotic Fractions</title>
+    
+    <!-- Swiper.js para el carrusel de diapositivas -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --vichy-blue-dark: #003366;
+            --vichy-blue-light: #00A9B7;
+            --vichy-bg-gradient: linear-gradient(135deg, #005F7F, #00A9B7);
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --grey-light: #f4f4f4;
+            --grey-medium: #cccccc;
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        html, body {
+            position: relative;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background-color: #e9e9e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 1100px;
+            height: 90vh;
+            max-height: 650px;
+            aspect-ratio: 16/9;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            background: var(--text-light);
+        }
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 60px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        /* Estilos de diapositivas específicas */
+        .slide-cover {
+            background: var(--vichy-bg-gradient);
+            color: var(--text-light);
+        }
+        
+        .slide-cover h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .slide-cover h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        
+        .slide-cover .author-info {
+            position: absolute;
+            bottom: 40px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .slide-content {
+            display: flex;
+            gap: 40px;
+            text-align: left;
+            align-items: center;
+            width: 100%;
+        }
+
+        .slide-content .text-column {
+            flex: 1;
+        }
+
+        .slide-content .image-column {
+            flex: 0 0 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .slide-content .image-column img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.15));
+            border-radius: 12px;
+        }
+
+        /* Estilo específico para la imagen de textura en la diapositiva 4.
+           Usamos un selector más específico para que anule la regla general. */
+        .slide-content .image-column .texture-image {
+            max-height: 360px; /* <-- AHORA SÍ, AJUSTA ESTE VALOR para hacerla más pequeña o grande */
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-title);
+            color: var(--vichy-blue-dark);
+        }
+        
+        h1 { font-size: 2.8rem; margin-bottom: 20px; width: 100%; }
+        h2 { font-size: 1.8rem; margin-bottom: 15px; }
+        h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--vichy-blue-light); }
+
+        p, li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+            background-color: var(--grey-light);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--vichy-blue-light);
+        }
+        
+        .grid-item i {
+            font-size: 2rem;
+            color: var(--vichy-blue-light);
+            margin-bottom: 15px;
+        }
+
+        /* Diapositiva de Sellos Mejorada */
+        .seals-emphasis-slide {
+            background-color: #f8f9fa;
+        }
+        .seals-emphasis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 35px;
+            width: 100%;
+            height: 80%;
+        }
+        .seal-item {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .seal-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .seal-item .icon {
+            font-size: 3.5rem;
+            color: var(--vichy-blue-light);
+        }
+        .seal-item h3 {
+            font-size: 1.2rem;
+            color: var(--vichy-blue-dark);
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .seal-item p {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .seal-item.disclaimer-seal {
+            border-top: 5px solid #ffc107;
+        }
+        .seal-item.disclaimer-seal .icon {
+            color: #ffc107;
+        }
+        .disclaimer {
+            font-size: 0.8rem !important;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Controles de navegación */
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--vichy-blue-dark);
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background-color: var(--vichy-blue-dark);
+            color: var(--text-light);
+        }
+
+        /* Paginación */
+        .swiper-pagination-fraction {
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .final-slide {
+            background: var(--vichy-bg-gradient);
+            color: var(--text-light);
+        }
+        
+        .final-slide h1, .final-slide h2, .final-slide p {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .presentation-container {
+                height: 100vh;
+                max-height: none;
+                width: 100%;
+            }
+            .swiper-slide {
+                padding: 30px;
+                justify-content: flex-start;
+            }
+            .slide-content {
+                flex-direction: column;
+            }
+            .slide-content .image-column {
+                order: -1; /* Mover imagen arriba */
+                margin-bottom: 20px;
+                max-height: 200px;
+            }
+            h1 { font-size: 2rem; }
+            .slide-cover h1 { font-size: 2.5rem; }
+            p, li { font-size: 1rem; }
+            .seals-emphasis-grid {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        <!-- Contenedor principal de Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                
+                <!-- Diapositiva 1: Portada -->
+                <div class="swiper-slide slide-cover">
+                    <h1>Sérum Reparador y Regenerador: Minéral 89 Probiotic Fractions</h1>
+                    <div class="author-info">
+                        <p><strong>Valentina Medina Quintero</strong></p>
+                        <p>Cosmetología | Agosto, 2025</p>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 2: ¿Qué es? -->
+                <div class="swiper-slide">
+                  
+                    <div class="slide-content">
+                        <div class="text-column">
+                            <h1>La Ciencia de la Reparación Cutánea</h1>
+                            <h2>Vichy Minéral 89 Probiotic Fractions 30ml</h2>
+                            <p>Es un sérum concentrado formulado para <strong>reparar la barrera cutánea</strong>, acelerar la recuperación de la piel y protegerla frente a los factores de estrés agudos (estrés, polución, falta de sueño).</p>
+                            <p><strong>Tipo de Piel:</strong> Ideal para todo tipo de piel, especialmente pieles estresadas, sensibilizadas, apagadas o con signos de fatiga. Es no comedogénico.</p>
+                        </div>
+                        <div class="image-column">
+                            <img src="../imagenes/Gemini_Generated_Image_7vl7a17vl7a17vl7.png" alt="Botella y caja del producto Vichy Minéral 89 Probiotic Fractions">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 3: Ingredientes Clave -->
+                <div class="swiper-slide">
+                    <h1>Componentes Clave: El Trío Reparador</h1>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <i class="fas fa-microscope"></i>
+                            <h3>5% Fracciones de Probióticos</h3>
+                            <p>Cultivos de Vitreoscilla Ferment que ayudan a reequilibrar el microbioma cutáneo, reforzando las defensas naturales y acelerando la reparación de la barrera.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-mountain-sun"></i>
+                            <h3>89% Agua Volcánica de Vichy</h3>
+                            <p>Enriquecida con 15 minerales esenciales, fortalece la piel contra agresiones externas, la calma y la hidrata profundamente.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Niacinamida y Vitamina E</h3>
+                            <p>Potentes antioxidantes. La Niacinamida (Vitamina B3) tiene propiedades antiinflamatorias, mejora la luminosidad y calma la piel.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Diapositiva 4: Textura -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <div class="image-column">
+                            <img src="../imagenes/Gemini_Generated_Image_7q4ewu7q4ewu7q4e.png" alt= "Textura del sérum Vichy" class="texture-image">
+                        </div>
+                        <div class="text-column">
+                            <h1>Textura Ligera, Absorción Rápida</h1>
+                            <p>Su fórmula tipo "agua en gel" es fresca, no pegajosa y se absorbe al instante, sin dejar residuos grasos.</p>
+                            <p>Esta característica lo hace perfecto como primer paso de cualquier rutina, ya que no interfiere con los productos que se aplican a continuación.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Diapositiva 5: Modo de Uso -->
+                <div class="swiper-slide">
+                    <h1>Protocolo de Aplicación Profesional</h1>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <i class="fas fa-clock"></i>
+                            <h3>¿Cuándo?</h3>
+                            <p>Aplicar por la mañana (AM) y por la noche (PM).</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-layer-group"></i>
+                            <h3>¿En qué paso?</h3>
+                            <p>Es el <strong>primer paso</strong> después de la limpieza y antes de cualquier otra crema o sérum.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-hand-holding-droplet"></i>
+                            <h3>¿Cómo?</h3>
+                            <p>Dispensar 2-3 gotas y aplicar con suaves toques ascendentes sobre rostro y cuello hasta su total absorción.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 6: Eficacia Comprobada -->
+                <div class="swiper-slide">
+                    <h1>Eficacia Comprobada y Beneficios</h1>
+                    <p>Resultados visibles para una piel saludable, según estudios clínicos de la marca tras 4 semanas de uso:</p>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>+45% Luminosidad</h3>
+                            <p>La piel recupera su brillo natural y luce más radiante y revitalizada.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-arrows-up-down"></i>
+                            <h3>+41% Elasticidad</h3>
+                            <p>Mejora la firmeza y la flexibilidad de la piel, reduciendo la apariencia de líneas finas.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-shield-halved"></i>
+                            <h3>Barrera Reparada</h3>
+                            <p>Fortalece las defensas antioxidantes y acelera la regeneración celular.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 7: Sellos y Seguridad (MEJORADA) -->
+                <div class="swiper-slide seals-emphasis-slide">
+                    <h1 style="margin-bottom: 40px;">Seguridad y Confianza: Nuestros Sellos</h1>
+                    <div class="seals-emphasis-grid">
+                        <div class="seal-item">
+                            <div class="icon"><i class="fas fa-user-doctor"></i></div>
+                            <h3>Dermatológicamente Probado</h3>
+                            <p>Supervisado por dermatólogos en pieles sensibles para garantizar máxima seguridad y tolerancia.</p>
+                        </div>
+                        <div class="seal-item">
+                            <div class="icon"><i class="fas fa-ban"></i></div>
+                            <h3>Fórmula Pura y Segura</h3>
+                            <p>Sin perfume, sin alcohol (etanol), sin parabenos y sin siliconas. Una fórmula limpia para tu piel.</p>
+                        </div>
+                        <div class="seal-item">
+                            <div class="icon"><i class="fas fa-vial-circle-check"></i></div>
+                            <h3>Hipoalergénico</h3>
+                            <p>Formulado específicamente para minimizar cualquier riesgo de reacciones alérgicas.</p>
+                        </div>
+                        <div class="seal-item disclaimer-seal">
+                            <div class="icon"><i class="fas fa-paw"></i></div>
+                            <h3>Política sobre Testeo Animal</h3>
+                            <p>L'Oréal (empresa matriz) no testa en animales, pero vende en mercados donde las autoridades pueden exigirlo.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Diapositiva 8: Sostenibilidad -->
+                <div class="swiper-slide">
+                    <h1>Compromiso más allá de la Piel</h1>
+                    <div class="slide-content">
+                        <div class="text-column">
+                            <h2>Sostenibilidad y Responsabilidad Ambiental</h2>
+                            <ul>
+                                <li><strong>Envase Sostenible:</strong> El frasco está hecho de vidrio reciclado y es 100% reciclable.</li>
+                                <li><strong>Producción Responsable:</strong> Como parte del programa "L'Oréal for the Future", se compromete a reducir la huella de carbono y gestionar el agua de forma sostenible.</li>
+                                <li><strong>Recurso Controlado:</strong> La extracción del Agua Volcánica se realiza de forma controlada para preservar su pureza y el ecosistema.</li>
+                            </ul>
+                        </div>
+                        <div class="image-column">
+                           <i class="fas fa-recycle" style="font-size: 10rem; color: var(--vichy-blue-light);"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 9: Recomendación Profesional -->
+                <div class="swiper-slide">
+                    <h1>Mi Recomendación como Cosmetóloga</h1>
+                    <h2>¿Cuándo y a Quién Recomendarlo?</h2>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <i class="fas fa-city"></i>
+                            <h3>Piel Urbana y Estresada</h3>
+                            <p>Ideal para clientes expuestos a polución, estrés y falta de sueño.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-band-aid"></i>
+                            <h3>Post-Procedimiento</h3>
+                            <p>Para calmar y reparar tras limpiezas profundas o peelings suaves.</p>
+                        </div>
+                        <div class="grid-item">
+                            <i class="fas fa-heart-crack"></i>
+                            <h3>Barrera Dañada</h3>
+                            <p>Para pieles sensibles, enrojecidas o que usan activos potentes como retinoides.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Diapositiva 10: Referencias -->
+                <div class="swiper-slide">
+                    <h1>Referencias y Fuentes</h1>
+                    <div class="grid-item" style="text-align: left; max-width: 80%; background-color: white; border-left-color: var(--vichy-blue-dark);">
+                        <ul>
+                            <li>Vichy Chile - Sitio Oficial. (www.vichy.cl)</li>
+                            <li>Vichy Laboratoires - Información Científica Internacional. (www.vichy.com)</li>
+                            <li>L'Oréal Group - Compromisos de Sostenibilidad y Política de Testeo Animal. (www.loreal.com/es/commitments-and-responsibilities/)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 11: Cierre -->
+                <div class="swiper-slide final-slide">
+                    <h1>¡Gracias por su atención!</h1>
+                    <h2>¿Preguntas?</h2>
+                    <br><br>
+                    <p><strong>Valentina Medina Quintero</strong></p>
+                </div>
+
+            </div>
+            <!-- Botones de navegación -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- Paginación -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <!-- Swiper.js -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Inicializar Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            // Opciones
+            loop: false,
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            keyboard: {
+                enabled: true,
+            },
+            mousewheel: true,
+        });
+    </script>
+
+</body>
+</html>
